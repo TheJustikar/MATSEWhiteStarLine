@@ -31,8 +31,8 @@ namespace Dataholder
         const double& length() const { return _length; };
         
         //Setter
-        void setStart(const Vector2D& start) { _start = start; _direction = _end - start; _length = _direction.length(); };
-        void setEnd(const Vector2D& end) { _end = end; _direction = end - _start; _length = _direction.length(); };
+        void setStart(const Vector2D start) { _start = start; _direction = _end - start; _length = _direction.length(); };
+        void setEnd(const Vector2D end) { _end = end; _direction = end - _start; _length = _direction.length(); };
         
         //Operator
         bool operator == (const Segment& rhs) const { return rhs._start == _start && rhs._end == _end; };

@@ -12,9 +12,18 @@ using namespace Dataholder;
 
 bool Segment::contains(const Vector2D &vector) const
 {
-    double multiplyer = (vector.x() - _start.x()) / _direction.x();
-    
-    return multiplyer <= 1 && multiplyer >= 0 && vector.y() == (_start.y() + (_direction.y() * multiplyer));
+    if (_direction.x() == 0)
+    {
+        double multiplyer = (vector.y() - _start.y()) / _direction.y();
+        
+        return multiplyer <= 1 && multiplyer >= 0 && vector.x() == (_start.x() + (_direction.x() * multiplyer));
+    }
+    else
+    {
+        double multiplyer = (vector.x() - _start.x()) / _direction.x();
+        
+        return multiplyer <= 1 && multiplyer >= 0 && vector.y() == (_start.y() + (_direction.y() * multiplyer));
+    }
 }
 
 bool Segment::contains(const Segment &segment) const
@@ -40,7 +49,7 @@ const Vector2D* Segment::intersectionWith(const Dataholder::Segment &segment)
     
     double denominator = ((y4 - y3) * (x2 - x1)) - ((y2 - y1) * (x4 - x3));
     
-    if (denominator == NAN || denominator == INFINITY || denominator == 0)
+    if (denominator == 0)
     {
         return nullptr;
     }
