@@ -95,7 +95,7 @@ namespace Input
                 if (lineStream >> x >> y)
                 {
                     isField = false;
-                    *field = CurrentField(Vector2D(), Vector2D(x, y), Vector2D());
+                    field = new CurrentField(Vector2D(), Vector2D(x, y), Vector2D());
                 }
                 else
                 {
@@ -117,7 +117,7 @@ namespace Input
                 if (lineStream >> xStart >> yStart >> xEnd >> yEnd)
                 {
                     isRoute = false;
-                    *route = Segment(Vector2D(xStart, yStart), Vector2D(xEnd, yEnd));
+                    route = new Segment(Vector2D(xStart, yStart), Vector2D(xEnd, yEnd));
                 }
                 else
                 {
@@ -128,7 +128,7 @@ namespace Input
             ++lineCount;
         }
         
-        *fields = vector<CurrentField>(0);
+        fields = new vector<CurrentField>(0);
         
         while (getline(stream, line))
         {
