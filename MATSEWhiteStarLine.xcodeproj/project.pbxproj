@@ -35,6 +35,7 @@
 		E663E5B71E938ED800FF9539 /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segment.h; sourceTree = "<group>"; };
 		E663E5B91E9392CD00FF9539 /* CurrentField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CurrentField.cpp; sourceTree = "<group>"; };
 		E663E5BA1E9392CD00FF9539 /* CurrentField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentField.h; sourceTree = "<group>"; };
+		E663E5BD1E93D92900FF9539 /* RoutePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePart.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +85,7 @@
 				E663E5B61E938ED800FF9539 /* Segment.cpp */,
 				E663E5BA1E9392CD00FF9539 /* CurrentField.h */,
 				E663E5B91E9392CD00FF9539 /* CurrentField.cpp */,
+				E663E5BD1E93D92900FF9539 /* RoutePart.h */,
 			);
 			path = DataHolder;
 			sourceTree = "<group>";
