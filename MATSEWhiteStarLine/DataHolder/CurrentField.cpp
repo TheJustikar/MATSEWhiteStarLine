@@ -41,15 +41,17 @@ std::vector< Vector2D > CurrentField::intersectionsWith(const Dataholder::Segmen
     Segment border[4] = {
                             Segment(_origin,    Vector2D(_origin.x(),   _end.y())),
                             Segment(_origin,    Vector2D(_end.x(),      _origin.y())),
-                            Segment(_end,       Vector2D(_end.x(),      _origin.y())),
-                            Segment(_end,       Vector2D(_origin.x(),   _end.y()))
+                            Segment(_end,       Vector2D(_origin.x(),   _end.y())),
+                            Segment(_end,       Vector2D(_end.x(),      _origin.y()))
                         };
     
     std::vector<Vector2D> ret(0);
     
-    for (Segment current: border) {
+    for (Segment current: border)
+    {
         const Vector2D* intersection = current.intersectionWith(segment);
-        if (intersection != nullptr) {
+        if (intersection != nullptr)
+        {
             ret.push_back(*intersection);
         }
     }
