@@ -9,6 +9,7 @@
 #include "CurrentField.h"
 
 using namespace Dataholder;
+using namespace std;
 
 bool CurrentField::contains(const Vector2D &vector) const
 {
@@ -28,14 +29,14 @@ bool CurrentField::contains(const CurrentField &field) const
     return contains(field._origin) && contains(field._end);
 }
 
-std::vector< Vector2D > CurrentField::intersectionsWith(const Dataholder::Segment &segment) const
+vector< Vector2D > CurrentField::intersectionsWith(const Dataholder::Segment &segment) const
 {
     bool containsStart = contains(segment.start());
     bool containsEnd = contains(segment.end());
     
     if (containsStart && containsEnd)
     {
-        return std::vector<Vector2D>(0);
+        return vector<Vector2D>(0);
     }
     
     Segment border[4] = {
@@ -45,7 +46,7 @@ std::vector< Vector2D > CurrentField::intersectionsWith(const Dataholder::Segmen
                             Segment(_end,       Vector2D(_end.x(),      _origin.y()))
                         };
     
-    std::vector<Vector2D> ret(0);
+    vector<Vector2D> ret(0);
     
     for (Segment current: border)
     {
@@ -60,5 +61,5 @@ std::vector< Vector2D > CurrentField::intersectionsWith(const Dataholder::Segmen
     {
         return ret;
     }
-    return std::vector<Vector2D>(0);
+    return vector<Vector2D>(0);
 }

@@ -16,6 +16,8 @@
 
 namespace Dataholder
 {
+    using namespace std;
+    
     class CurrentField
     {
         
@@ -40,7 +42,7 @@ namespace Dataholder
         bool contains(const Vector2D& vector) const;
         bool contains(const Segment& segment) const;
         bool contains(const CurrentField& field) const;
-        std::vector< Vector2D > intersectionsWith(const Segment& segment) const;
+        vector< Vector2D > intersectionsWith(const Segment& segment) const;
         
     };
 }
