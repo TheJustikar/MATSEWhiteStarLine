@@ -8,7 +8,9 @@
 
 #include "Input.h"
 
-class Input
-{
+bool read(string filePath) {
     
-};
+    
+    
+    return false;
+}
