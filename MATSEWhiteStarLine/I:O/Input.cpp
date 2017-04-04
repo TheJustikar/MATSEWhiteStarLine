@@ -9,6 +9,7 @@
 #include "Input.h"
 
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -81,7 +82,7 @@ namespace Input
             return false;
         }
         
-        ifstream lineStream;
+        stringstream lineStream;
         
         bool isField = true;
         
@@ -89,7 +90,7 @@ namespace Input
         {
             if (line.length() != 0 && line[0] != ';')
             {
-                lineStream = ifstream(line);
+                lineStream = stringstream(line);
                 double x, y;
                 if (lineStream >> x >> y)
                 {
@@ -111,7 +112,7 @@ namespace Input
         {
             if (line.length() != 0 && line[0] != ';')
             {
-                lineStream = ifstream(line);
+                lineStream = stringstream(line);
                 double xStart, yStart, xEnd, yEnd;
                 if (lineStream >> xStart >> yStart >> xEnd >> yEnd)
                 {
@@ -133,7 +134,7 @@ namespace Input
         {
             if (line.length() != 0 && line[0] != ';')
             {
-                lineStream = ifstream(line);
+                lineStream = stringstream(line);
                 double xOrigin, yOrigin, xEnd, yEnd, xFlow, yFlow;
                 if (lineStream >> xOrigin >> yOrigin >> xEnd >> yEnd >> xFlow >> yFlow)
                 {
