@@ -26,7 +26,7 @@ namespace Dataholder
         
     public:
         //Constructor
-        CurrentField(const Vector2D origin, const Vector2D end, const Vector2D current) : _origin(origin), _end(end), _current(current) {};
+        CurrentField(const Vector2D origin = Vector2D(), const Vector2D end = Vector2D(), const Vector2D current = Vector2D()) : _origin(origin), _end(end), _current(current) {};
         
         //Getter
         const Vector2D& origin() const { return _origin; };
@@ -41,7 +41,9 @@ namespace Dataholder
         //Methods
         bool contains(const Vector2D& vector) const;
         bool contains(const Segment& segment) const;
+        bool containsParts(const Segment& segment) const;
         bool contains(const CurrentField& field) const;
+        bool containsParts(const CurrentField& field) const;
         vector< Vector2D > intersectionsWith(const Segment& segment) const;
         
     };

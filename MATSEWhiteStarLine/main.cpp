@@ -7,11 +7,14 @@
 //
 
 #include <iostream>
+#include <string>
 
 #include "Vector2D.h"
 #include "Segment.h"
 #include "CurrentField.h"
 #include "RoutePart.h"
+
+#include "Input.h"
 
 using namespace Dataholder;
 using namespace std;

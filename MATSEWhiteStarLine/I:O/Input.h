@@ -19,11 +19,14 @@
 using namespace Dataholder;
 using namespace std;
 
-vector<CurrentField>* fields = nullptr;
-Segment* way = nullptr;
-CurrentField* field = nullptr;
-string* description = nullptr;
-
-bool read(string filePath);
+namespace Input {
+    
+    extern vector<CurrentField>* fields;
+    extern Segment* route;
+    extern CurrentField* field;
+    extern string* description;
+    
+    bool read(const string& filePath);
+}
 
 #endif /* Input_h */
