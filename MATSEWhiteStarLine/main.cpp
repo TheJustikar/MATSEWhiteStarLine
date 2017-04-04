@@ -11,6 +11,7 @@
 #include "Vector2D.h"
 #include "Segment.h"
 #include "CurrentField.h"
+#include "RoutePart.h"
 
 using namespace Dataholder;
 using namespace std;
