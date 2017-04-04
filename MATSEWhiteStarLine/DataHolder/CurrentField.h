@@ -16,6 +16,8 @@
 
 namespace Dataholder
 {
+    using namespace std;
+    
     class CurrentField
     {
         
@@ -24,7 +26,7 @@ namespace Dataholder
         
     public:
         //Constructor
-        CurrentField(const Vector2D& origin, const Vector2D& end, const Vector2D& current) : _origin(origin), _end(end), _current(current) {};
+        CurrentField(const Vector2D origin, const Vector2D end, const Vector2D current) : _origin(origin), _end(end), _current(current) {};
         
         //Getter
         const Vector2D& origin() const { return _origin; };
@@ -32,13 +34,15 @@ namespace Dataholder
         const Vector2D& current() const { return _current; };
         
         //Setter
-        void setOrigin(const Vector2D& origin) { _origin = origin; };
-        void setEnd(const Vector2D& end) { _end = end; };
-        void setCurrent(const Vector2D& current) { _current = current; };
+        void setOrigin(const Vector2D origin) { _origin = origin; };
+        void setEnd(const Vector2D end) { _end = end; };
+        void setCurrent(const Vector2D current) { _current = current; };
         
         //Methods
-        bool contains(const Vector2D& vector);
-        std::vector< Vector2D > intersectionsWith(const Segment& segment);
+        bool contains(const Vector2D& vector) const;
+        bool contains(const Segment& segment) const;
+        bool contains(const CurrentField& field) const;
+        vector< Vector2D > intersectionsWith(const Segment& segment) const;
         
     };
 }

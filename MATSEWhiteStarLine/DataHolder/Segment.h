@@ -31,12 +31,17 @@ namespace Dataholder
         const double& length() const { return _length; };
         
         //Setter
-        void setStart(const Vector2D& start) { _start = start; _direction = _end - start; _length = _direction.length(); };
-        void setEnd(const Vector2D& end) { _end = end; _direction = end - _start; _length = _direction.length(); };
+        void setStart(const Vector2D start) { _start = start; _direction = _end - start; _length = _direction.length(); };
+        void setEnd(const Vector2D end) { _end = end; _direction = end - _start; _length = _direction.length(); };
+        
+        //Operator
+        bool operator == (const Segment& rhs) const { return rhs._start == _start && rhs._end == _end; };
         
         //Methods
-        bool contains(const Vector2D& vector);
-        Vector2D* intersectionWith(const Segment& segment);
+        bool isParallell (const Segment& segment) const;
+        bool contains(const Vector2D& vector) const;
+        bool contains(const Segment& segment) const;
+        const Vector2D* intersectionWith(const Segment& segment);
     };
 }
 

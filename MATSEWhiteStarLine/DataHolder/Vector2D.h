@@ -13,6 +13,8 @@
 
 namespace Dataholder
 {
+    using namespace std;
+    
     class Vector2D
     {
         
@@ -22,7 +24,7 @@ namespace Dataholder
         
     public:
         //Constructor
-        Vector2D(const double& x, const double& y) : _x(x), _y(y) { _length = std::hypot(x, y); };
+        Vector2D(const double x = 0, const double y = 0) : _x(x), _y(y) { _length = hypot(_x, _y); };
         
         //Getter
         const double& x() const { return _x; };
@@ -30,14 +32,15 @@ namespace Dataholder
         const double& length() const { return _length; };
         
         //Setter
-        void setX(const double& x) { _x = x; _length = std::hypot(x, _y); };
-        void setY(const double& y) { _y = y; _length = std::hypot(_x, y); };
+        void setX(const double x) { _x = x; _length = hypot(_x, _y); };
+        void setY(const double y) { _y = y; _length = hypot(_x, _y); };
         
         //Operators
-        Vector2D operator + (const Vector2D& rhs) const { return Vector2D::Vector2D(rhs._x + _x, rhs._y + _y); };
-        Vector2D operator - (const Vector2D& rhs) const { return Vector2D::Vector2D(rhs._x - _x, rhs._y - _y); };
-        Vector2D operator * (const double& rhs) const { return Vector2D::Vector2D(rhs * _x, rhs * _y); };
-        bool operator == (const Vector2D& rhs) const { return rhs._x == _x && rhs._y == _y; };
+        Vector2D operator + (const Vector2D& rhs) const { return Vector2D::Vector2D(_x + rhs._x, _y + rhs._y); };
+        Vector2D operator - (const Vector2D& rhs) const { return Vector2D::Vector2D(_x - rhs._x, _y - rhs._y); };
+        Vector2D operator * (const double& rhs) const { return Vector2D::Vector2D(_x * rhs, _y * rhs); };
+        double operator * (const Vector2D& rhs) const { return (_x * rhs._x) + (_y * rhs._y); };
+        bool operator == (const Vector2D& rhs) const { return _x == rhs._x && _y == rhs._y; };
         
     };
 }
