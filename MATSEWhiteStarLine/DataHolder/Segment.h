@@ -17,22 +17,22 @@ namespace Dataholder
     {
         
     private:
-        Vector2D start, end, direction;
-        double length;
+        Vector2D _start, _end, _direction;
+        double _length;
         
     public:
         //Constructor
-        Segment(const Vector2D start, const Vector2D end) : start(start), end(end), direction(end - start) { length = direction.getLength(); };
-        
-        //Setter
-        void setStart(const Vector2D& start) { this->start = start; direction = end - start; length = direction.getLength(); };
-        void setEnd(const Vector2D& end) { this->end = end; direction = end - start; length = direction.getLength(); };
+        Segment(const Vector2D start, const Vector2D end) : _start(start), _end(end), _direction(end - start) { _length = _direction.length(); };
         
         //Getter
-        const Vector2D& getStart() const { return start; };
-        const Vector2D& getEnd() const { return end; };
-        const Vector2D& getDirection() const { return direction; };
-        const double& getLength() const { return length; };
+        const Vector2D& start() const { return _start; };
+        const Vector2D& end() const { return _end; };
+        const Vector2D& direction() const { return _direction; };
+        const double& length() const { return _length; };
+        
+        //Setter
+        void setStart(const Vector2D& start) { _start = start; _direction = _end - start; _length = _direction.length(); };
+        void setEnd(const Vector2D& end) { _end = end; _direction = end - _start; _length = _direction.length(); };
         
         //Methods
         bool contains(const Vector2D& vector);

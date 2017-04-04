@@ -12,16 +12,19 @@ using namespace Dataholder;
 
 bool Segment::contains(const Vector2D &vector)
 {
-    double multiplyer = (vector.getX() - start.getX()) / direction.getX();
+    double multiplyer = (vector.x() - _start.x()) / _direction.x();
     
-    return multiplyer <= 1 && multiplyer >= 0 && vector.getY() == (start.getY() + (direction.getY() * multiplyer));
+    return multiplyer <= 1 && multiplyer >= 0 && vector.y() == (_start.y() + (_direction.y() * multiplyer));
 }
 
 Vector2D* Segment::intersectionWith(const Dataholder::Segment &segment)
 {
-    double multiplyer1 = (segment.start.getX() - start.getX()) / direction.getX();
-    multiplyer1 += segment.direction.getX() * ((start.getY() - segment.start.getY()) / (direction.getX() * segment.direction.getY()));
-    multiplyer1 *=
+    double multiplyer = (segment._start.x() - _start.x()) / _direction.x();
+    multiplyer += segment._direction.x() * ((_start.y() - segment._start.y()) / (_direction.x() * segment._direction.y()));
+    multiplyer *= _direction.x() * segment._direction.y();
+    multiplyer /= (_direction.x() * segment._direction.y()) - _direction.y();
+    
+    Vector2D* intersection = new Vector2D(_start.x() + _direction.x() * multiplyer, _start.y() + _direction.y() * multiplyer);
     
     return nullptr;
 }
