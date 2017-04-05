@@ -22,7 +22,7 @@ namespace Dataholder
         
     public:
         //Constructor
-        Segment(const Vector2D start, const Vector2D end) : _start(start), _end(end), _direction(end - start) { _length = _direction.length(); };
+        Segment(const Vector2D start = Vector2D(), const Vector2D end = Vector2D()) : _start(start), _end(end), _direction(end - start) { _length = _direction.length(); };
         
         //Getter
         const Vector2D& start() const { return _start; };

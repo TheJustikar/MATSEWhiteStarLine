@@ -7,13 +7,15 @@
 //
 
 #include <iostream>
+#include <string>
 
 #include "Vector2D.h"
 #include "Segment.h"
 #include "CurrentField.h"
 #include "RoutePart.h"
 
-using namespace Dataholder;
+#include "Input.h"
+
 using namespace std;
 
 int main(int argc, const char * argv[])
