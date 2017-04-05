@@ -24,9 +24,19 @@ bool CurrentField::contains(const Segment &segment) const
     return contains(segment.start()) && contains(segment.end());
 }
 
+bool CurrentField::containsParts(const Segment &segment) const
+{
+    return contains(segment.start()) || contains(segment.end());
+}
+
 bool CurrentField::contains(const CurrentField &field) const
 {
     return contains(field._origin) && contains(field._end);
+}
+
+bool CurrentField::containsParts(const CurrentField &field) const
+{
+    return contains(field._origin) || contains(field._end);
 }
 
 vector< Vector2D > CurrentField::intersectionsWith(const Dataholder::Segment &segment) const
