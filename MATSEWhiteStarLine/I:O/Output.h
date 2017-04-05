@@ -16,7 +16,7 @@ using namespace std;
 
 namespace Output
 {
-    void writeResult(const vector<pair<Input::InputData, vector<Dataholder::RoutePart>>> results);
+    void writeResult(const vector<pair<const Input::InputData&, vector<Dataholder::RoutePart>>>& results);
 }
 
 #endif /* Output_hpp */

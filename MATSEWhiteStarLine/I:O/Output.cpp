@@ -12,11 +12,11 @@
 
 namespace Output
 {
-    void writeResult(const vector<pair<Input::InputData, vector<Dataholder::RoutePart>>> results)
+    void writeResult(const vector< const pair< const Input::InputData&, const vector< const Dataholder::RoutePart >& > >& results)
     {
-        string result("xD");
+        string result("");
         
-        for (pair<Input::InputData, vector<Dataholder::RoutePart>> currentPair: results)
+        for (pair< const Input::InputData&, const vector<const Dataholder::RoutePart >& > currentPair: results)
         {
             result += "\n\n---------------------------------------------------------------------------------------\n\n";
             

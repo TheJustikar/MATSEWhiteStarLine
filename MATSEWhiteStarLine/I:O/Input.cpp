@@ -160,31 +160,32 @@ namespace Input
         return true;
     }
     
-    vector<InputData> readInputDir()
+    vector<InputData*>* readInputDir()
     {
-        vector<InputData> data(0);
-        
         DIR *dir;
         struct dirent *ent;
         if ((dir = opendir ("./Input/")) != NULL)
         {
+            vector<InputData*>* data = new vector<InputData*>(0);
             while ((ent = readdir (dir)) != NULL)
             {
                 string name(ent->d_name);
                 if (name != "." && name != "..")
                 {
-                    InputData d("./Input/" + name);
-                    data.push_back(d);
+                    InputData* current = new InputData("./Input/" + name);
+                    if (current != nullptr)
+                    {
+                        data->push_back(current);
+                    }
                 }
             }
             closedir (dir);
+            return data;
         }
         else
         {
-            return data;
+            return nullptr;
         }
-        
-        return data;
     }
     
     string InputData::resultString() const
