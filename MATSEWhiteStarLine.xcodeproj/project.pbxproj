@@ -11,6 +11,8 @@
 		E663E5AF1E937C2100FF9539 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E663E5AD1E937C2100FF9539 /* Input.cpp */; };
 		E663E5B81E938ED800FF9539 /* Segment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E663E5B61E938ED800FF9539 /* Segment.cpp */; };
 		E663E5BB1E9392CD00FF9539 /* CurrentField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E663E5B91E9392CD00FF9539 /* CurrentField.cpp */; };
+		E66CAF711E94D9A70078ED0A /* Output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E66CAF6F1E94D9A70078ED0A /* Output.cpp */; };
+		E66CAF731E94DD7A0078ED0A /* RoutePart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E66CAF721E94DD7A0078ED0A /* RoutePart.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +39,10 @@
 		E663E5BA1E9392CD00FF9539 /* CurrentField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentField.h; sourceTree = "<group>"; };
 		E663E5BD1E93D92900FF9539 /* RoutePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePart.h; sourceTree = "<group>"; };
 		E663E5BF1E93EBCF00FF9539 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		E66CAF6F1E94D9A70078ED0A /* Output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Output.cpp; sourceTree = "<group>"; };
+		E66CAF701E94D9A70078ED0A /* Output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Output.h; sourceTree = "<group>"; };
+		E66CAF721E94DD7A0078ED0A /* RoutePart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoutePart.cpp; sourceTree = "<group>"; };
+		E66CAF741E94E4F80078ED0A /* output.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = output.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 				E663E5BA1E9392CD00FF9539 /* CurrentField.h */,
 				E663E5B91E9392CD00FF9539 /* CurrentField.cpp */,
 				E663E5BD1E93D92900FF9539 /* RoutePart.h */,
+				E66CAF721E94DD7A0078ED0A /* RoutePart.cpp */,
 			);
 			path = DataHolder;
 			sourceTree = "<group>";
@@ -96,6 +103,8 @@
 			children = (
 				E663E5AE1E937C2100FF9539 /* Input.h */,
 				E663E5AD1E937C2100FF9539 /* Input.cpp */,
+				E66CAF701E94D9A70078ED0A /* Output.h */,
+				E66CAF6F1E94D9A70078ED0A /* Output.cpp */,
 			);
 			name = I/O;
 			path = "I:O";
@@ -112,6 +121,7 @@
 		E663E5B11E93810100FF9539 /* Output */ = {
 			isa = PBXGroup;
 			children = (
+				E66CAF741E94E4F80078ED0A /* output.txt */,
 			);
 			path = Output;
 			sourceTree = SOURCE_ROOT;
@@ -174,8 +184,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E663E5BB1E9392CD00FF9539 /* CurrentField.cpp in Sources */,
+				E66CAF711E94D9A70078ED0A /* Output.cpp in Sources */,
 				E663E5AF1E937C2100FF9539 /* Input.cpp in Sources */,
 				E663E5A31E937AD700FF9539 /* main.cpp in Sources */,
+				E66CAF731E94DD7A0078ED0A /* RoutePart.cpp in Sources */,
 				E663E5B81E938ED800FF9539 /* Segment.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
