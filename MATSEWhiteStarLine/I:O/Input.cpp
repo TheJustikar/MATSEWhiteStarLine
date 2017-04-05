@@ -18,10 +18,11 @@ namespace Input
 {
     void InputData::onError(const int& line, const string& error)
     {
-        *description = string("ERROR in Line ") + to_string(line) + string(": ") + error;
+        *description = "ERROR in Line " + to_string(line) + ": " + error + "\n";
         fields = nullptr;
         route = nullptr;
         field = nullptr;
+        this->error = true;
     }
     
     bool InputData::read(const string& filePath)
@@ -91,7 +92,7 @@ namespace Input
                 if (lineStream >> x >> y)
                 {
                     isField = false;
-                    field = new CurrentField(Vector2D(), Vector2D(x, y), Vector2D());
+                    field = new Dataholder::CurrentField(Dataholder::Vector2D(), Dataholder::Vector2D(x, y), Dataholder::Vector2D());
                 }
                 else
                 {
@@ -113,7 +114,7 @@ namespace Input
                 if (lineStream >> xStart >> yStart >> xEnd >> yEnd)
                 {
                     isRoute = false;
-                    route = new Segment(Vector2D(xStart, yStart), Vector2D(xEnd, yEnd));
+                    route = new Dataholder::Segment(Dataholder::Vector2D(xStart, yStart), Dataholder::Vector2D(xEnd, yEnd));
                 }
                 else
                 {
@@ -124,7 +125,7 @@ namespace Input
             ++lineCount;
         }
         
-        fields = new vector<CurrentField>(0);
+        fields = new vector<Dataholder::CurrentField>(0);
         
         while (getline(stream, line))
         {
@@ -134,7 +135,7 @@ namespace Input
                 double xOrigin, yOrigin, xEnd, yEnd, xFlow, yFlow;
                 if (lineStream >> xOrigin >> yOrigin >> xEnd >> yEnd >> xFlow >> yFlow)
                 {
-                    CurrentField current(Vector2D(xOrigin, yOrigin), Vector2D(xEnd, yEnd), Vector2D(xFlow, yFlow));
+                    Dataholder::CurrentField current(Dataholder::Vector2D(xOrigin, yOrigin), Dataholder::Vector2D(xEnd, yEnd), Dataholder::Vector2D(xFlow, yFlow));
                     
                     if ((*field).containsParts(current))
                     {
@@ -172,8 +173,7 @@ namespace Input
                 string name(ent->d_name);
                 if (name != "." && name != "..")
                 {
-                    InputData d;
-                    d.read("./Input/" + name);
+                    InputData d("./Input/" + name);
                     data.push_back(d);
                 }
             }
@@ -185,5 +185,34 @@ namespace Input
         }
         
         return data;
+    }
+    
+    string InputData::resultString() const
+    {
+        string result("");
+        
+        result += "*************************\n";
+        result += *description;
+        result += "*************************\n";
+        
+        if (error)
+        {
+            return result;
+        }
+        
+        result += "\nGröße des Gebiets:\n";
+        result += to_string(field->end().x()) + " " + to_string(field->end().y()) + "\n";
+        
+        result += "\nZu fahrende Route:\n";
+        result += "Punkt A: " + route->start().toString() + "\n";
+        result += "Punkt E: " + route->end().toString() + "\n";
+        
+        result += "\nStrömungen\n";
+        for (Dataholder::CurrentField current: *fields)
+        {
+            result += current.toString() + "\n";
+        }
+        
+        return result;
     }
 }

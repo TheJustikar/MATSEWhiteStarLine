@@ -16,7 +16,6 @@
 #include "Segment.h"
 #include "CurrentField.h"
 
-using namespace Dataholder;
 using namespace std;
 
 namespace Input {
@@ -25,17 +24,21 @@ namespace Input {
     {
         
     private:
+        string* description;
+        bool error;
         void onError(const int& line, const string& error);
+        bool read(const string& filePath);
         
     public:
-        vector<CurrentField>* fields;
-        Segment* route;
-        CurrentField* field;
-        string* description;
+        vector<Dataholder::CurrentField>* fields;
+        Dataholder::Segment* route;
+        Dataholder::CurrentField* field;
         
-        InputData() : fields(nullptr), route(nullptr), field(nullptr), description(nullptr) {};
-    
-        bool read(const string& filePath);
+        const bool& isError() const { return error; };
+        
+        InputData(const string& filePath = "") : fields(nullptr), route(nullptr), field(nullptr), description(nullptr), error(false) { read(filePath); };
+        
+        string resultString() const;
     };
     
     vector<InputData> readInputDir();

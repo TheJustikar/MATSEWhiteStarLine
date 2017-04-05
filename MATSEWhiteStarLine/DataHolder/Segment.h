@@ -42,6 +42,7 @@ namespace Dataholder
         bool contains(const Vector2D& vector) const;
         bool contains(const Segment& segment) const;
         const Vector2D* intersectionWith(const Segment& segment);
+        string toString() const { return "Von " + _start.toString() + " nach " + _end.toString(); };
     };
 }
 

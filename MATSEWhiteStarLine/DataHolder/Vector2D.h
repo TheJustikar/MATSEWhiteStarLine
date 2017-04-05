@@ -10,6 +10,7 @@
 #define Vector2D_h
 
 #include <cmath>
+#include <string>
 
 namespace Dataholder
 {
@@ -42,6 +43,8 @@ namespace Dataholder
         double operator * (const Vector2D& rhs) const { return (_x * rhs._x) + (_y * rhs._y); };
         bool operator == (const Vector2D& rhs) const { return _x == rhs._x && _y == rhs._y; };
         
+        //Methods
+        string toString() const { return "(" + to_string(_x) + ";" + to_string(_y) + ")"; };
     };
 }
 
