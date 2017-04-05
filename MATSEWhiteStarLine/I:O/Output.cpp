@@ -7,30 +7,36 @@
 //
 
 #include <fstream>
+#include <iostream>
 
 #include "Output.h"
 
 namespace Output
 {
-    void writeResult(const vector< const pair< const Input::InputData&, const vector< const Dataholder::RoutePart >& > >& results)
+    void writeResult(vector<pair<Input::InputData, vector<Dataholder::RoutePart>>> results)
     {
         string result("");
         
-        for (pair< const Input::InputData&, const vector<const Dataholder::RoutePart >& > currentPair: results)
+        for (pair<Input::InputData, vector<Dataholder::RoutePart>> currentPair: results)
         {
             result += "\n\n---------------------------------------------------------------------------------------\n\n";
             
             result += currentPair.first.resultString();
             
-            result += "\n\nDaten für die Planung der Route:\n\n";
-            
-            for (Dataholder::RoutePart current: currentPair.second)
+            if (!currentPair.first.isError())
             {
-                result += current.resultString() + "\n";
+                result += "\n\nDaten für die Planung der Route:\n\n";
+                
+                for (const Dataholder::RoutePart current: currentPair.second)
+                {
+                    result += current.resultString() + "\n";
+                }
             }
             
             result += "\n\n---------------------------------------------------------------------------------------\n\n";
         }
+        
+        cout << result << endl;
         
         ofstream output;
         output.open("./Output/output.txt");

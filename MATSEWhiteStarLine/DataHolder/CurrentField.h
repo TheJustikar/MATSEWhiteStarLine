@@ -26,7 +26,7 @@ namespace Dataholder
         
     public:
         //Constructor
-        CurrentField(const Vector2D origin = Vector2D(), const Vector2D end = Vector2D(), const Vector2D current = Vector2D()) : _origin(origin), _end(end), _current(current) {};
+        CurrentField(const Vector2D& origin = Vector2D(), const Vector2D& end = Vector2D(), const Vector2D& current = Vector2D()) : _origin(origin), _end(end), _current(current) {};
         
         //Getter
         const Vector2D& origin() const { return _origin; };
@@ -34,9 +34,9 @@ namespace Dataholder
         const Vector2D& current() const { return _current; };
         
         //Setter
-        void setOrigin(const Vector2D origin) { _origin = origin; };
-        void setEnd(const Vector2D end) { _end = end; };
-        void setCurrent(const Vector2D current) { _current = current; };
+        void setOrigin(const Vector2D& origin) { _origin = origin; };
+        void setEnd(const Vector2D& end) { _end = end; };
+        void setCurrent(const Vector2D& current) { _current = current; };
         
         //Methods
         bool contains(const Vector2D& vector) const;
@@ -44,8 +44,10 @@ namespace Dataholder
         bool containsParts(const Segment& segment) const;
         bool contains(const CurrentField& field) const;
         bool containsParts(const CurrentField& field) const;
-        vector< Vector2D > intersectionsWith(const Segment& segment) const;
+        vector<Vector2D> intersectionsWith(const Segment& segment) const;
         string toString() const { return _origin.toString() + " " + _end.toString() + " SV = " + _current.toString(); };
+        vector<Segment> nearestBordersTo(const Vector2D& point) const;
+        vector<Segment> nearestBordersTo(const Vector2D& point1, const Vector2D& point2) const;
         
     };
 }

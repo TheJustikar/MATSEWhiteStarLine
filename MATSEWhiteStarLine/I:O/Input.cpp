@@ -73,12 +73,6 @@ namespace Input
             ++lineCount;
         }
         
-        if (isDescription)
-        {
-            onError(lineCount, "Beschreibung wurde nicht beendet");
-            return false;
-        }
-        
         stringstream lineStream;
         
         bool isField = true;

@@ -25,7 +25,7 @@ namespace Dataholder
         const double distance, speed, time;
         
         //Constructor
-        RoutePart(const Segment route, Vector2D skv) : route(route), skv(skv), distance((route.end() - route.start()).length()), speed(skv.length()), time(distance / speed) {};
+        RoutePart(const Segment& route = Segment(), const Vector2D& current = Vector2D()) : route(route), skv(route.direction().norm() - current.norm()), distance(route.length()), speed(skv.length()), time(distance / speed) {};
         
         string resultString() const;
     };
