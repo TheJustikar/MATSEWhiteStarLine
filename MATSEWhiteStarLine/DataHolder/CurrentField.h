@@ -45,6 +45,7 @@ namespace Dataholder
         bool contains(const CurrentField& field) const;
         bool containsParts(const CurrentField& field) const;
         vector< Vector2D > intersectionsWith(const Segment& segment) const;
+        string toString() const { return _origin.toString() + " " + _end.toString() + " SV = " + _current.toString(); };
         
     };
 }
