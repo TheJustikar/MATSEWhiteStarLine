@@ -10,17 +10,13 @@
 
 #include <fstream>
 #include <sstream>
+#include <dirent.h>
 
 using namespace std;
 
 namespace Input
 {
-    string* description = nullptr;
-    vector<CurrentField>* fields = nullptr;
-    Segment* route = nullptr;
-    CurrentField* field = nullptr;
-    
-    void onError(const int& line, const string& error)
+    void InputData::onError(const int& line, const string& error)
     {
         *description = string("ERROR in Line ") + to_string(line) + string(": ") + error;
         fields = nullptr;
@@ -28,7 +24,7 @@ namespace Input
         field = nullptr;
     }
     
-    bool read(const string& filePath)
+    bool InputData::read(const string& filePath)
     {
         ifstream stream(filePath);
         
@@ -161,5 +157,33 @@ namespace Input
         }
         
         return true;
+    }
+    
+    vector<InputData> readInputDir()
+    {
+        vector<InputData> data(0);
+        
+        DIR *dir;
+        struct dirent *ent;
+        if ((dir = opendir ("./Input/")) != NULL)
+        {
+            while ((ent = readdir (dir)) != NULL)
+            {
+                string name(ent->d_name);
+                if (name != "." && name != "..")
+                {
+                    InputData d;
+                    d.read("./Input/" + name);
+                    data.push_back(d);
+                }
+            }
+            closedir (dir);
+        }
+        else
+        {
+            return data;
+        }
+        
+        return data;
     }
 }

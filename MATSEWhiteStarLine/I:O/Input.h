@@ -21,12 +21,24 @@ using namespace std;
 
 namespace Input {
     
-    extern vector<CurrentField>* fields;
-    extern Segment* route;
-    extern CurrentField* field;
-    extern string* description;
+    class InputData
+    {
+        
+    private:
+        void onError(const int& line, const string& error);
+        
+    public:
+        vector<CurrentField>* fields;
+        Segment* route;
+        CurrentField* field;
+        string* description;
+        
+        InputData() : fields(nullptr), route(nullptr), field(nullptr), description(nullptr) {};
     
-    bool read(const string& filePath);
+        bool read(const string& filePath);
+    };
+    
+    vector<InputData> readInputDir();
 }
 
 #endif /* Input_h */
