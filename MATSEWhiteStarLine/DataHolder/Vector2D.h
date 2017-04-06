@@ -43,11 +43,12 @@ namespace Dataholder
         Vector2D operator * (const double& rhs) const { return Vector2D::Vector2D(_x * rhs, _y * rhs); };
         double operator * (const Vector2D& rhs) const { return (_x * rhs._x) + (_y * rhs._y); };
         bool operator == (const Vector2D& rhs) const { return _x == rhs._x && _y == rhs._y; };
+        bool operator < (const Vector2D& rhs) const { return this->_length < rhs._length; };
         Vector2D nearestOf(const vector<Vector2D>& vectors) const;
         
         //Methods
         string toString() const { return "(" + to_string(_x) + ";" + to_string(_y) + ")"; };
-        Vector2D norm() const { return *this * (1/_length); };
+        Vector2D norm() const { return (*this) * (1/_length); };
     };
 }
 
