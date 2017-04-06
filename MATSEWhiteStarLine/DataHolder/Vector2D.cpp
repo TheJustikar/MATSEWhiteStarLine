@@ -2,7 +2,7 @@
 //  Vector2D.cpp
 //  MATSEWhiteStarLine
 //
-//  Created by WetterOnline GmbH on 05.04.17.
+//  Created by Sören Schmaljohann on 05.04.17.
 //  Copyright © 2017 Sören Schmaljohann. All rights reserved.
 //
 

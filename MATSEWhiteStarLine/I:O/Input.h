@@ -2,7 +2,7 @@
 //  Input.h
 //  MATSEWhiteStarLine
 //
-//  Created by WetterOnline GmbH on 04.04.17.
+//  Created by Sören Schmaljohann on 04.04.17.
 //  Copyright © 2017 Sören Schmaljohann. All rights reserved.
 //
 
