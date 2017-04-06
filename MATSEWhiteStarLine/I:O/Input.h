@@ -41,7 +41,7 @@ namespace Input {
         string resultString() const;
     };
     
-    vector<InputData> readInputDir();
+    vector<InputData*>* readInputDir();
 }
 
 #endif /* Input_h */

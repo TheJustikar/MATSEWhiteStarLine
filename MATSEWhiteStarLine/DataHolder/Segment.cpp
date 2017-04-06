@@ -16,29 +16,43 @@ namespace Dataholder
         {
             double multiplyer = (vector.y() - _start.y()) / _direction.y();
             
-            return multiplyer <= 1 && multiplyer >= 0 && vector.x() == (_start.x() + (_direction.x() * multiplyer));
+            if (_start.y() < _end.y())
+            {
+                return multiplyer <= 1 && multiplyer >= 0 && vector.x() == (_start.x() + (_direction.x() * multiplyer));
+            }
+            else
+            {
+                return multiplyer >= -1 && multiplyer <= 0 && vector.x() == (_start.x() + (_direction.x() * multiplyer));
+            }
         }
         else
         {
             double multiplyer = (vector.x() - _start.x()) / _direction.x();
             
-            return multiplyer <= 1 && multiplyer >= 0 && vector.y() == (_start.y() + (_direction.y() * multiplyer));
+            if (_start.x() < _end.x())
+            {
+                return multiplyer <= 1 && multiplyer >= 0 && vector.y() == (_start.y() + (_direction.y() * multiplyer));
+            }
+            else
+            {
+                return multiplyer >= -1 && multiplyer <= 0 && vector.y() == (_start.y() + (_direction.y() * multiplyer));
+            }
         }
     }
     
     bool Segment::contains(const Segment &segment) const
     {
-        return isParallell(segment) && (contains(segment._start) || contains(segment._end));
+        return (contains(segment._start) && contains(segment._end));
     }
     
     bool Segment::isParallell(const Dataholder::Segment &segment) const
     {
-        return _direction == segment._direction;
+        return _direction.norm() == segment._direction.norm();
     }
     
     const Vector2D* Segment::intersectionWith(const Dataholder::Segment &segment)
     {
-        if (isParallell(segment))
+        if (isParallell(segment) || contains(segment._start) || contains(segment._end))
         {
             return nullptr;
         }
@@ -60,7 +74,7 @@ namespace Dataholder
         y /= denominator;
         
         Vector2D* intersection = new Vector2D(x, y);
-        if (segment.contains(*intersection))
+        if (contains(*intersection) && segment.contains(*intersection))
         {
             return intersection;
         }

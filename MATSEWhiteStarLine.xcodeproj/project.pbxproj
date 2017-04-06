@@ -13,6 +13,7 @@
 		E663E5BB1E9392CD00FF9539 /* CurrentField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E663E5B91E9392CD00FF9539 /* CurrentField.cpp */; };
 		E66CAF711E94D9A70078ED0A /* Output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E66CAF6F1E94D9A70078ED0A /* Output.cpp */; };
 		E66CAF731E94DD7A0078ED0A /* RoutePart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E66CAF721E94DD7A0078ED0A /* RoutePart.cpp */; };
+		E66CAF761E9510370078ED0A /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E66CAF751E9510370078ED0A /* Vector2D.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		E66CAF701E94D9A70078ED0A /* Output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Output.h; sourceTree = "<group>"; };
 		E66CAF721E94DD7A0078ED0A /* RoutePart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoutePart.cpp; sourceTree = "<group>"; };
 		E66CAF741E94E4F80078ED0A /* output.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = output.txt; sourceTree = "<group>"; };
+		E66CAF751E9510370078ED0A /* Vector2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				E663E5B31E93815100FF9539 /* Vector2D.h */,
+				E66CAF751E9510370078ED0A /* Vector2D.cpp */,
 				E663E5B71E938ED800FF9539 /* Segment.h */,
 				E663E5B61E938ED800FF9539 /* Segment.cpp */,
 				E663E5BA1E9392CD00FF9539 /* CurrentField.h */,
@@ -183,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E66CAF761E9510370078ED0A /* Vector2D.cpp in Sources */,
 				E663E5BB1E9392CD00FF9539 /* CurrentField.cpp in Sources */,
 				E66CAF711E94D9A70078ED0A /* Output.cpp in Sources */,
 				E663E5AF1E937C2100FF9539 /* Input.cpp in Sources */,
