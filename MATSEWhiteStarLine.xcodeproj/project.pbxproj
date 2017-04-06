@@ -39,7 +39,6 @@
 		E663E5B91E9392CD00FF9539 /* CurrentField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CurrentField.cpp; sourceTree = "<group>"; };
 		E663E5BA1E9392CD00FF9539 /* CurrentField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentField.h; sourceTree = "<group>"; };
 		E663E5BD1E93D92900FF9539 /* RoutePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePart.h; sourceTree = "<group>"; };
-		E663E5BF1E93EBCF00FF9539 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 		E66CAF6F1E94D9A70078ED0A /* Output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Output.cpp; sourceTree = "<group>"; };
 		E66CAF701E94D9A70078ED0A /* Output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Output.h; sourceTree = "<group>"; };
 		E66CAF721E94DD7A0078ED0A /* RoutePart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoutePart.cpp; sourceTree = "<group>"; };
@@ -63,7 +62,6 @@
 			children = (
 				E663E5A11E937AD700FF9539 /* MATSEWhiteStarLine */,
 				E663E5A01E937AD700FF9539 /* Products */,
-				E663E5B01E93810100FF9539 /* Input */,
 				E663E5B11E93810100FF9539 /* Output */,
 			);
 			sourceTree = "<group>";
@@ -112,14 +110,6 @@
 			name = I/O;
 			path = "I:O";
 			sourceTree = "<group>";
-		};
-		E663E5B01E93810100FF9539 /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				E663E5BF1E93EBCF00FF9539 /* test.txt */,
-			);
-			path = Input;
-			sourceTree = SOURCE_ROOT;
 		};
 		E663E5B11E93810100FF9539 /* Output */ = {
 			isa = PBXGroup;

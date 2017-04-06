@@ -202,7 +202,7 @@ namespace Input
         result += "Punkt A: " + route->start().toString() + "\n";
         result += "Punkt E: " + route->end().toString() + "\n";
         
-        result += "\nStrömungen\n";
+        result += "\nStrömungen:\n";
         for (Dataholder::CurrentField current: *fields)
         {
             result += current.toString() + "\n";
