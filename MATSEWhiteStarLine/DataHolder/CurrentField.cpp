@@ -20,24 +20,9 @@ namespace Dataholder
         return xIsInside && yIsInside;
     }
     
-    bool CurrentField::contains(const Segment &segment) const
-    {
-        return contains(segment.start()) && contains(segment.end());
-    }
-    
-    bool CurrentField::containsParts(const Segment &segment) const
-    {
-        return contains(segment.start()) || contains(segment.end());
-    }
-    
-    bool CurrentField::contains(const CurrentField &field) const
-    {
-        return contains(field._origin) && contains(field._end);
-    }
-    
     bool CurrentField::containsParts(const CurrentField &field) const
     {
-        return contains(field._origin) || contains(field._end);
+        return contains(field._origin) || contains(field._end) || contains(Vector2D(field._origin.x(), field._end.y())) || contains(Vector2D(field._end.x(), field._origin.y()));
     }
     
     vector<Vector2D> CurrentField::intersectionsWith(const Dataholder::Segment &segment) const
@@ -66,6 +51,7 @@ namespace Dataholder
             borders = nearestBordersTo(segment.start(), segment.end());
         }
         
+        //Intersections with all relevat borders
         for (Segment current: borders)
         {
             const Vector2D* intersection = current.intersectionWith(segment);

@@ -40,9 +40,9 @@ namespace Dataholder
         
         //Methods
         bool contains(const Vector2D& vector) const;
-        bool contains(const Segment& segment) const;
-        bool containsParts(const Segment& segment) const;
-        bool contains(const CurrentField& field) const;
+        bool contains(const Segment& segment) const { return contains(segment.start()) && contains(segment.end()); };
+        bool containsParts(const Segment& segment) const { return contains(segment.start()) || contains(segment.end()); };
+        bool contains(const CurrentField& field) const { return contains(field._origin) && contains(field._end); };
         bool containsParts(const CurrentField& field) const;
         vector<Vector2D> intersectionsWith(const Segment& segment) const;
         string toString() const { return _origin.toString() + " " + _end.toString() + " SV = " + _current.toString(); };

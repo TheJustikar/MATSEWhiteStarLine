@@ -12,20 +12,7 @@ namespace Dataholder
 {
     bool Segment::contains(const Vector2D &vector) const
     {
-        if (_direction.x() == 0)
-        {
-            double multiplyer = (vector.y() - _start.y()) / _direction.y();
-            
-            if (_start.y() < _end.y())
-            {
-                return multiplyer <= 1 && multiplyer >= 0 && vector.x() == (_start.x() + (_direction.x() * multiplyer));
-            }
-            else
-            {
-                return multiplyer >= -1 && multiplyer <= 0 && vector.x() == (_start.x() + (_direction.x() * multiplyer));
-            }
-        }
-        else
+        if (_direction.x() != 0)
         {
             double multiplyer = (vector.x() - _start.x()) / _direction.x();
             
@@ -38,16 +25,20 @@ namespace Dataholder
                 return multiplyer >= -1 && multiplyer <= 0 && vector.y() == (_start.y() + (_direction.y() * multiplyer));
             }
         }
-    }
-    
-    bool Segment::contains(const Segment &segment) const
-    {
-        return (contains(segment._start) && contains(segment._end));
-    }
-    
-    bool Segment::isParallell(const Dataholder::Segment &segment) const
-    {
-        return _direction.norm() == segment._direction.norm();
+        else
+        {
+            // Use y-direction, if x-dircetion is zero
+            double multiplyer = (vector.y() - _start.y()) / _direction.y();
+            
+            if (_start.y() < _end.y())
+            {
+                return multiplyer <= 1 && multiplyer >= 0 && vector.x() == (_start.x() + (_direction.x() * multiplyer));
+            }
+            else
+            {
+                return multiplyer >= -1 && multiplyer <= 0 && vector.x() == (_start.x() + (_direction.x() * multiplyer));
+            }
+        }
     }
     
     const Vector2D* Segment::intersectionWith(const Dataholder::Segment &segment)
@@ -74,6 +65,7 @@ namespace Dataholder
         y /= denominator;
         
         Vector2D* intersection = new Vector2D(x, y);
+        // Check if intersection is on segment
         if (contains(*intersection) && segment.contains(*intersection))
         {
             return intersection;

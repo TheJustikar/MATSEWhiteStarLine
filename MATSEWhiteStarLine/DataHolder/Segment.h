@@ -39,9 +39,9 @@ namespace Dataholder
         bool operator != (const Segment& rhs) const { return !(rhs == *this); };
         
         //Methods
-        bool isParallell (const Segment& segment) const;
+        bool isParallell (const Segment& segment) const { return _direction.norm() == segment._direction.norm(); };
         bool contains(const Vector2D& vector) const;
-        bool contains(const Segment& segment) const;
+        bool contains(const Segment& segment) const { return (contains(segment._start) && contains(segment._end)); };
         const Vector2D* intersectionWith(const Segment& segment);
         string toString() const { return "Von " + _start.toString() + " nach " + _end.toString(); };
     };

@@ -17,14 +17,17 @@ namespace Output
     {
         string result("");
         
+        // Write all data
         for (pair<Input::InputData, vector<Dataholder::RoutePart>> currentPair: results)
         {
             result += "\n\n---------------------------------------------------------------------------------------\n\n";
             
+            // Write Input
             result += currentPair.first.resultString();
             
             if (!currentPair.first.isError())
             {
+                // Write result on non-error input
                 result += "\n\nDaten für die Planung der Route:\n\n";
                 
                 for (const Dataholder::RoutePart current: currentPair.second)
@@ -36,6 +39,7 @@ namespace Output
             result += "\n\n---------------------------------------------------------------------------------------\n\n";
         }
         
+        // Write to file and standart-output
         cout << result << endl;
         
         ofstream output;

@@ -18,6 +18,7 @@ namespace Input
 {
     void InputData::onError(const int& line, const string& error)
     {
+        // Set error as description for output
         *description = "ERROR in Line " + to_string(line) + ": " + error + "\n";
         fields = nullptr;
         route = nullptr;
@@ -29,18 +30,20 @@ namespace Input
     {
         ifstream stream(filePath);
         
+        // Counter for error output
         int lineCount = 1;
-        
-        bool isDescription = true;
         
         string line;
         
+        // Read description
+        bool isDescription = true;
         description = new string("");
-        
         while (isDescription && getline(stream, line))
         {
+            // Skip empty lines
             if (line.length() != 0)
             {
+                // Error on non-comments
                 if (line[0] != ';' || (line.length() <= 2 && line[1] != ' '))
                 {
                     onError(lineCount, "Beschreibung beginnt nicht mit einem '; '");
@@ -49,16 +52,16 @@ namespace Input
                 
                 string text = line.substr(2);
                 
-                if (lineCount == 1)
+                // Error on wrong beginn
+                if (*description == "" && text != "*************************")
                 {
-                    if (text != "*************************")
-                    {
-                        onError(lineCount, "Beschreibung wird nicht mit 25 '*' eingeleitet");
-                        return false;
-                    }
+                    onError(lineCount, "Beschreibung wird nicht mit 25 '*' eingeleitet");
+                    return false;
+                    
                 }
                 else
                 {
+                    // End
                     if (text == "*************************")
                     {
                         isDescription = false;
@@ -73,16 +76,25 @@ namespace Input
             ++lineCount;
         }
         
+        // Error on unclosed description
+        if(isDescription)
+        {
+            onError(lineCount, "Beschreibung wird nicht beendet");
+            return false;
+        }
+        
         stringstream lineStream;
         
+        // Read field
         bool isField = true;
-        
         while (isField && getline(stream, line))
         {
+            // Skip empty linesand comments
             if (line.length() != 0 && line[0] != ';')
             {
                 lineStream = stringstream(line);
                 double x, y;
+                // Parse field in double's
                 if (lineStream >> x >> y)
                 {
                     isField = false;
@@ -90,6 +102,7 @@ namespace Input
                 }
                 else
                 {
+                    // Parsing-error
                     onError(lineCount, "Das Feld wurde nicht eingegrenzt");
                     return false;
                 }
@@ -98,13 +111,14 @@ namespace Input
         }
         
         bool isRoute = true;
-        
         while (isRoute && getline(stream, line))
         {
+            // Skip empty linesand comments
             if (line.length() != 0 && line[0] != ';')
             {
                 lineStream = stringstream(line);
                 double xStart, yStart, xEnd, yEnd;
+                // Parse route in double's
                 if (lineStream >> xStart >> yStart >> xEnd >> yEnd)
                 {
                     isRoute = false;
@@ -112,6 +126,7 @@ namespace Input
                 }
                 else
                 {
+                    // Parsing-error
                     onError(lineCount, "Die Route wurde nicht (richtig) angegeben");
                     return false;
                 }
@@ -119,18 +134,27 @@ namespace Input
             ++lineCount;
         }
         
-        fields = new vector<Dataholder::CurrentField>(0);
+        // Error on route outside o area
+        if (!(*field).contains(*route))
+        {
+            onError(lineCount, "Route liegt nicht im Gebiet");
+            return false;
+        }
         
+        fields = new vector<Dataholder::CurrentField>(0);
         while (getline(stream, line))
         {
+            // Skip empty linesand comments
             if (line.length() != 0 && line[0] != ';')
             {
                 lineStream = stringstream(line);
                 double xOrigin, yOrigin, xEnd, yEnd, xFlow, yFlow;
+                // Parse fields in double's
                 if (lineStream >> xOrigin >> yOrigin >> xEnd >> yEnd >> xFlow >> yFlow)
                 {
                     Dataholder::CurrentField current(Dataholder::Vector2D(xOrigin, yOrigin), Dataholder::Vector2D(xEnd, yEnd), Dataholder::Vector2D(xFlow, yFlow));
                     
+                    // Skip fields outside of area
                     if ((*field).containsParts(current))
                     {
                         (*fields).push_back(current);
@@ -138,6 +162,7 @@ namespace Input
                 }
                 else
                 {
+                    // Parsing-error
                     onError(lineCount, "Das Strömungsfeld wurde nicht (richtig) angegeben");
                     return false;
                 }
@@ -145,17 +170,12 @@ namespace Input
             ++lineCount;
         }
         
-        if (!(*field).contains(*route))
-        {
-            onError(lineCount, "Route liegt nicht im Gebiet");
-            return false;
-        }
-        
         return true;
     }
     
     vector<InputData*>* readInputDir()
     {
+        // Open input dir
         DIR *dir;
         struct dirent *ent;
         if ((dir = opendir ("./Input/")) != NULL)
@@ -163,9 +183,11 @@ namespace Input
             vector<InputData*>* data = new vector<InputData*>(0);
             while ((ent = readdir (dir)) != NULL)
             {
+                // read all files
                 string name(ent->d_name);
                 if (name != "." && name != "..")
                 {
+                    // Genreate input for file
                     InputData* current = new InputData("./Input/" + name);
                     if (current != nullptr)
                     {
