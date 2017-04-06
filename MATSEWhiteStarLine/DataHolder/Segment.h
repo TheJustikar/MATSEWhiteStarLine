@@ -35,7 +35,8 @@ namespace Dataholder
         void setEnd(const Vector2D& end) { _end = end; _direction = end - _start; _length = _direction.length(); };
         
         //Operator
-        bool operator == (const Segment& rhs) const { return rhs._start == _start && rhs._end == _end; };
+        bool operator == (const Segment& rhs) const { return (rhs._start == _start && rhs._end == _end) || (rhs._end == _start && rhs._start == _end); };
+        bool operator != (const Segment& rhs) const { return !(rhs == *this); };
         
         //Methods
         bool isParallell (const Segment& segment) const;

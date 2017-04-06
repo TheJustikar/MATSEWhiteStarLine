@@ -86,31 +86,74 @@ namespace Dataholder
     {
         vector<Segment> borders(0);
         
-        if ((point.x() <= _end.x() && point.x() >= _origin.x()) || (point.x() >= _end.x() && point.x() <= _origin.x()))
+        bool nearXorigin = abs(point.x() - _origin.x()) < abs(point.x() - _end.x());
+        bool nearYorigin = abs(point.y() - _origin.y()) < abs(point.y() - _end.y());
+        bool insideX = (point.x() >= _origin.x() && point.x() <= _end.x()) || (point.x() <= _origin.x() && point.x() >= _end.x());
+        bool insideY = (point.y() >= _origin.y() && point.y() <= _end.y()) || (point.y() <= _origin.y() && point.x() >= _end.y());
+        
+        if (nearXorigin && nearYorigin)
         {
-            if (abs(point.y() - _end.y()) < abs(point.y() - _origin.y()))
+            if (insideX && !insideY)
             {
-                borders.push_back(Segment(Vector2D(_end.x(), _end.y()), Vector2D(_origin.x(), _end.y())));
+                borders.push_back(Segment(_origin, Vector2D(_end.x(), _origin.y())));
+            }
+            else if (insideY && !insideX)
+            {
+                borders.push_back(Segment(_origin, Vector2D(_origin.x(), _end.y())));
             }
             else
             {
-                borders.push_back(Segment(Vector2D(_end.x(), _origin.y()), Vector2D(_origin.x(), _origin.y())));
+                borders.push_back(Segment(_origin, Vector2D(_end.x(), _origin.y())));
+                borders.push_back(Segment(_origin, Vector2D(_origin.x(), _end.y())));
             }
         }
-        else if ((point.y() <= _end.y() && point.y() >= _origin.y()) || (point.y() >= _end.y() && point.y() <= _origin.y()))
+        else if (!nearXorigin && nearYorigin)
         {
-            if (abs(point.x() - _end.x()) < abs(point.x() - _origin.x()))
+            if (insideX && !insideY)
             {
-                borders.push_back(Segment(Vector2D(_end.x(), _end.y()), Vector2D(_end.x(), _origin.y())));
+                borders.push_back(Segment(_origin, Vector2D(_end.x(), _origin.y())));
+            }
+            else if (insideY && !insideX)
+            {
+                borders.push_back(Segment(Vector2D(_end.x(), _origin.y()), _end));
             }
             else
             {
-                borders.push_back(Segment(Vector2D(_origin.x(), _origin.y()), Vector2D(_origin.x(), _end.y())));
+                borders.push_back(Segment(_origin, Vector2D(_end.x(), _origin.y())));
+                borders.push_back(Segment(Vector2D(_end.x(), _origin.y()), _end));
+            }
+        }
+        else if (nearXorigin && !nearYorigin)
+        {
+            if (insideX && !insideY)
+            {
+                borders.push_back(Segment(Vector2D(_origin.x(), _end.y()), _end));
+            }
+            else if (insideY && !insideX)
+            {
+                borders.push_back(Segment(_origin, Vector2D(_origin.x(), _end.y())));
+            }
+            else
+            {
+                borders.push_back(Segment(Vector2D(_origin.x(), _end.y()), _end));
+                borders.push_back(Segment(_origin, Vector2D(_origin.x(), _end.y())));
             }
         }
         else
         {
-            
+            if (insideX && !insideY)
+            {
+                borders.push_back(Segment(Vector2D(_origin.x(), _end.y()), _end));
+            }
+            else if (insideY && !insideX)
+            {
+                borders.push_back(Segment(Vector2D(_end.x(), _origin.y()), _end));
+            }
+            else
+            {
+                borders.push_back(Segment(Vector2D(_origin.x(), _end.y()), _end));
+                borders.push_back(Segment(Vector2D(_end.x(), _origin.y()), _end));
+            }
         }
         
         return borders;
@@ -118,7 +161,20 @@ namespace Dataholder
     
     vector<Segment> CurrentField::nearestBordersTo(const Vector2D& point1, const Vector2D& point2) const
     {
-        vector<Segment> borders(0);
+        vector<Segment> borders = nearestBordersTo(point1);
+        
+        for(Segment currentBorder: nearestBordersTo(point2))
+        {
+            bool shouldAdd = true;
+            for (Segment current: borders)
+            {
+                shouldAdd = shouldAdd && current != currentBorder;
+            }
+            if (shouldAdd)
+            {
+                borders.push_back(currentBorder);
+            }
+        }
         
         return borders;
     }

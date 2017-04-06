@@ -22,19 +22,25 @@ Strömungen
 
 Daten für die Planung der Route:
 
+Strecke: Von (21.000000;10.000000) nach (25.000000;5.000000)
+	Entfernung: 6.403124 km
+	SKV: (-0.082412;-0.073762)
+	Sollgeschwindigkeit: 0.110601 km/h
+	Fahrzeit: 57.894029 h
+
 Strecke: Von (15.000000;17.500000) nach (21.000000;10.000000)
 	Entfernung: 9.604686 km
 	SKV: (-0.375305;-0.780869)
 	Sollgeschwindigkeit: 0.866377 km/h
 	Fahrzeit: 11.086030 h
 
-Strecke: Von (5.000000;30.000000) nach (15.000000;17.500000)
-	Entfernung: 16.007811 km
-	SKV: (-0.082412;-0.073762)
-	Sollgeschwindigkeit: 0.110601 km/h
-	Fahrzeit: 144.735072 h
+Strecke: Von (9.000000;25.000000) nach (15.000000;17.500000)
+	Entfernung: 9.604686 km
+	SKV: (-0.269932;-1.227683)
+	Sollgeschwindigkeit: 1.257007 km/h
+	Fahrzeit: 7.640915 h
 
-Strecke: Von (21.000000;10.000000) nach (25.000000;5.000000)
+Strecke: Von (5.000000;30.000000) nach (9.000000;25.000000)
 	Entfernung: 6.403124 km
 	SKV: (-0.082412;-0.073762)
 	Sollgeschwindigkeit: 0.110601 km/h
