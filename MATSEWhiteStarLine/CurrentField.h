@@ -52,4 +52,4 @@ namespace Dataholder
     };
 }
 
-#endif /* CurrentField_hpp */
+#endif /* CurrentField_h */

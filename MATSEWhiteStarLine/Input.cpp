@@ -6,16 +6,15 @@
 //  Copyright © 2017 Sören Schmaljohann. All rights reserved.
 //
 
-#include "Input.h"
-
 #include <fstream>
 #include <sstream>
 #include <dirent.h>
 
-using namespace std;
+#include "Input.h"
 
 namespace Input
 {
+    using namespace std;
     void InputData::onError(const int& line, const string& error)
     {
         // Set error as description for output

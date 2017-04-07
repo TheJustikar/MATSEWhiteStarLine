@@ -13,12 +13,12 @@
 
 namespace Output
 {
-    void writeResult(vector<pair<Input::InputData, vector<Dataholder::RoutePart>>> results)
+    void writeResult(vector<pair<Input::InputData, vector<Dataholder::RoutePart> > > results)
     {
         string result("");
         
         // Write all data
-        for (pair<Input::InputData, vector<Dataholder::RoutePart>> currentPair: results)
+        for (pair<Input::InputData, vector<Dataholder::RoutePart> > currentPair: results)
         {
             result += "\n\n---------------------------------------------------------------------------------------\n\n";
             
